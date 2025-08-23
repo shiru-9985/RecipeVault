@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  position: fixed center;
+  font-family: 'Segoe UI', sans-serif;
+  background: #ffeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  width: 360px;
+}
+
+h2 {
+  text-align: center;
+  color: #d72638;
+  margin-bottom: 24px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #d72638;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #c0182c;
+}
+
+.google-btn {
+  background: white;
+  color: #444;
+  border: 1px solid #ccc;
+  margin-top: 12px;
+}
+
+.google-btn:hover {
+  background: #eee;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  color: #d72638;
+  text-decoration: none;
+  font-weight: bold;
+}

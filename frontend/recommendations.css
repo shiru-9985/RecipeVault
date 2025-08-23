@@ -1,0 +1,333 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f9f5f0; 
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #6faa57; 
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+.recipe-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 360px;
+  }
+  
+  .recipe-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .recipe-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  
+  .recipe-content {
+    padding: 20px;
+  }
+  
+  .recipe-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .recipe-info {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .recipe-info li strong {
+    color: #222;
+  }
+  
+  .recipe-btn {
+    display: inline-block;
+    background-color: #e76f51;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .recipe-btn:hover {
+    background-color: #d45d3a;
+  }
+  
+.header {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.subtitle {
+    color: #777;
+    margin-top: 10px;
+}
+
+.recipes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.recipe-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.recipe-content {
+    padding: 15px;
+}
+
+.recipe-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.recipe-details {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.youtube-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 120px;
+    border: none;
+    background: #ff5722;
+    color: #fff;
+    text-align: center;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.youtube-link:hover {
+    background: #e64a19;
+}
+
+.order:hover {
+  background-color: #c62828;
+}
+
+/* fav section */
+.add-to-favorites {
+    background-color: #ff5c5c;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-to-favorites:hover {
+    background-color: #e04343;
+}
+/* Favorites Button */
+.add-to-favorites {
+  background: linear-gradient(45deg, #ff5c5c, #ff1f1f);
+  color: white;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(255, 92, 92, 0.5);
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+  user-select: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 130px;
+}
+
+.add-to-favorites:hover {
+  background: linear-gradient(45deg, #ff1f1f, #b50000);
+  box-shadow: 0 6px 12px rgba(181, 0, 0, 0.7);
+  transform: translateY(-3px);
+}
+
+/* Watch Video Button */
+.youtube_link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 28px;
+  border: none;
+  background: linear-gradient(90deg, #ff5722, #ff7043);
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.5);
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  min-width: 140px;
+}
+
+.youtube_link:hover {
+  background: linear-gradient(90deg, #e64a19, #d84315);
+  box-shadow: 0 6px 14px rgba(230, 74, 25, 0.7);
+  transform: translateY(-3px);
+}
+
+/* General container styling for filters */
+body {
+  margin: 0;
+  background: #f6f2ea;  /* Soft warm beige */
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  color: #232e17;
+}
+
+/* Style for Filter Bar */
+body {
+  background: #f6f2ea;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background: #f6f2ea;
+  color: #232e17;
+}
+
+body {
+  background: #f6f2ea; /* soft warm beige */
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  margin: 0;
+  color: #232e17;
+}
+
+body {
+  background: #f6f2ea;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  margin: 0;
+  color: #232e17;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 0.7rem; /* Reduce space below h2 */
+  margin-top: 2rem;      /* Adjust as needed */
+}
+
+/* Align filter bar closely under h2 */
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto 2rem auto;  /* Remove top margin, only bottom */
+  padding: 0.5rem 0.8rem;
+  max-width: 900px;
+  background: transparent;
+  position: relative;
+  top: 0;                     /* Set top to 0, as margin is now 0 */
+}
+
+.filter-group select {
+  min-width: 140px;
+  max-width: 180px;
+  padding: 0.45rem 1.0rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  color: #19432b;
+  background: linear-gradient(135deg, #91d18b 75%, #6ab17e 100%);
+  box-shadow: 0 3px 9px rgba(80, 128, 70, 0.18);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.filter-group select:hover {
+  background: linear-gradient(135deg, #a0db94 75%, #7ac28a 100%);
+  box-shadow: 0 5px 15px rgba(80, 128, 70, 0.28);
+}
+
+.filter-group select:focus {
+  background: linear-gradient(135deg, #6ab17e 75%, #497f5d 100%);
+  box-shadow: 0 6px 20px rgba(74, 118, 81, 0.33);
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    padding: 0.7rem 0.3rem;
+    margin: 0.2rem auto 1.1rem auto;  /* Even closer on mobile */
+  }
+  .filter-group select {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+
+
+
+
+
+
+
+

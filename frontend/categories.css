@@ -1,0 +1,216 @@
+/* Base Styles */
+:root {
+    --primary: #4CAF50;       /* Vegetarian green */
+    --non-veg: #E53E3E;       /* Non-veg red */
+    --accent: #FFC107;        /* Golden yellow */
+    --light: #f8f9fa;
+    --dark: #212529;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    backdrop-filter: brightness(0.85);
+    padding-top: 80px; /* Add padding to body to prevent header overlap */
+    position: relative;
+    z-index: 0; /* Ensures the background stays behind all other content */
+}
+
+/* Overlay Styles (for dimming the background) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    z-index: -1; /* Ensures overlay is behind all other content */
+}
+
+/* Fixed Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary), #2E7D32);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+    z-index: 1000; /* Ensure header stays above other content */
+}
+
+/* Adjust main content to account for fixed header */
+main {
+    min-height: calc(100vh - 160px); /* Adjust for header/footer */
+    display: flex;
+    align-items: center;
+    padding: 4rem 0 2rem; /* Extra top padding */
+}
+
+/* Container Styles */
+.container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Content */
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Section Styles */
+section {
+    width: 100%;
+}
+
+/* Heading Styles */
+h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--dark);
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent);
+    margin: 0.5rem auto;
+    border-radius: 2px;
+}
+
+/* Category Buttons Styles */
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    z-index: 1; /* Ensure buttons are on top */
+}
+
+.category-btn {
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.category-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.category-btn:hover::before {
+    left: 100%;
+}
+
+.category-btn:nth-child(1) {
+    background: var(--primary);
+}
+
+.category-btn:nth-child(2) {
+    background: var(--non-veg);
+}
+
+.category-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.category-btn:active {
+    transform: translateY(0);
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: var(--dark);
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.category-buttons {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .category-btn {
+        width: 100%;
+        padding: 1.2rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    body {
+        padding-top: 70px; /* Adjust for smaller header */
+    }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Favorite Recipes</title>
+  <link rel="stylesheet" href="fav.css">
+</head>
+<body>
+  <!-- it checks user logged in or not -->
+  <script>
+    if (sessionStorage.getItem('log') !== 'true') {
+    alert('You must log in to access this page.');
+    window.location.href = 'index.html';
+}
+</script>
+  <nav class="navbar">
+    <div class="logo">RecipeVault</div>
+    <div class="nav-links">
+      <a href="categories.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="index.html">Logout</a>
+    </div>
+  </nav>
+
+  <header class="header">
+    <h1>Your Favorite Recipes</h1>
+    <p class="subtitle">These are your saved favorites</p>
+  </header>
+
+  <main class="recipes-container" id="favorites-container">
+    <!-- Favorite recipes will be inserted here -->
+  </main>
+
+  <script src="favorites.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - RecipeVault</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div class="left-panel"></div>
+    <div class="intro-video">
+    <video width="100%" height ="100%" autoplay muted loop>
+      <source src="vedio.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+
+  <div class="right-panel">
+    <div class="card">
+      <h2>Login</h2>
+      <input type="email" placeholder="Email" id="loginEmail">
+      <input type="password" placeholder="Password" id="loginPassword">
+        <button onclick="login()">Login</button>
+      <!-- <button class="google-btn">Login with Google</button> -->
+          <button onclick="forgot()">forgot password</button>
+        <a href="signup.html">Don't have an account? Sign up</a>
+    </div>
+  </div>
+
+  <script>
+
+    function login() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      if (!email.includes('@')) {
+          alert('Please enter a valid email address with an "@" symbol.');
+          return;
+        }
+        // Validate input
+      if (!email || !password) {
+        alert('Please enter both email and password');
+        return;
+      }
+      const log = 'false';
+
+      // Send login request
+      fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Response from server:", data);
+          localStorage.setItem('email', email);
+          console.log(email);
+        if (data.message === 'Login successful') {
+          sessionStorage.setItem("log", "true");
+          window.location.href = 'categories.html';
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch(err => {
+        console.error('Error:', err);
+        alert('An error occurred. Please try again.');
+      });
+    }
+
+    function forgot()
+    {
+      window.location.href ="forgot.html";
+    }
+
+  </script>
+
+</body>
+</html>

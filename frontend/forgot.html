@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="forgot.css">
+<style>
+    #otpSection {
+      display: none;
+      margin-top: 10px;
+    }
+
+    input, button {
+      display: block;
+      margin: 10px auto;
+      padding: 8px;
+      width: 80%;
+    }
+  </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+</head>
+<body>
+    <div class="forgotpass">
+    <h2>Reset Password</h2>
+    <input type="text" placeholder="Email" id="email">
+    <input type="password" placeholder="Enter new password" id="resetPassword">
+    <input type="password" placeholder="Confirm new Password" id="resetConfirmPassword">
+    <button onclick="sendOTP()">Send OTP</button>
+
+    <div id="otpSection">
+      <input type="text" placeholder="Enter 6-digit OTP" id="otpInput">
+      <button onclick="verifyOTP()">Verify & Reset</button>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+  let emailFromFrontend = '';
+
+  function sendOTP() {
+    const email = document.getElementById('email').value;
+
+    if (!email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    emailFromFrontend = email;
+
+    fetch('http://localhost:3000/send-otp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('OTP sent to your email.');
+        document.getElementById('otpSection').style.display = 'block';
+      } else {
+        alert('Failed to send OTP.');
+      }
+    })
+    .catch(error => {
+      console.error('OTP Error:', error);
+      alert('Error sending OTP.');
+    });
+  }
+
+  function verifyOTP() {
+    const otp = document.getElementById('otpInput').value;
+    const password = document.getElementById('resetPassword').value;
+    const confirmPassword = document.getElementById('resetConfirmPassword').value;
+
+    if (!otp || otp.length !== 6) {
+      alert('Please enter a valid 6-digit OTP.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+
+    fetch('http://localhost:3000/verify-otp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: emailFromFrontend, otp}),
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.verified) {
+        // Proceed to reset
+        fetch('http://localhost:3000/reset', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: emailFromFrontend,
+            password,
+            //confirmPassword: password
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.message === 'updated') {
+            alert('Password Updated');
+            localStorage.setItem('email', emailFromFrontend);
+            window.location.href = 'index.html';
+          } else {
+            alert('Password Reset Failed: ' + data.message);
+          }
+        });
+      } else {
+        alert('Incorrect OTP.');
+      }
+    })
+    .catch(err => {
+      console.error('Verify OTP error:', err);
+      alert('OTP verification failed.');
+    });
+  }
+</script>

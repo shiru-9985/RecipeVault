@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Categories</title>
+  <link rel="stylesheet" href="categories.css">
+</head>
+<body>
+  <!-- it checks user logged in or not -->
+  <script>
+    if (sessionStorage.getItem('log') !== 'true') {
+    alert('You must log in to access this page.');
+    window.location.href = 'index.html';
+    }
+</script>
+
+  <!-- chatbot -->
+   <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="s8qefyk4CnxUP4DK0k1YX";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+<!-- <script>
+  const email = localStorage.getItem("userEmail"); // set after OTP login
+  let userId = email || localStorage.getItem("chatUserId");
+
+  if (!userId) {
+    userId = crypto.randomUUID();
+    localStorage.setItem("chatUserId", userId);
+  }
+
+  window.chatbaseConfig = {
+    chatbotId:"emcqubloiksurjbt15b4fi1ytt4l6p2h",
+    userId: userId
+  };
+</script>
+
+<script src="https://www.chatbase.co/embed.min.js" 
+        id="emcqubloiksurjbt15b4fi1ytt4l6p2h" 
+        domain="www.chatbase.co">
+</script> -->
+
+
+<!-- chatbot -->
+    <div class="overlay"></div>
+
+  <header>
+    <div class="container">
+      <h1>Choose Your Dietary Preference</h1>
+      <nav>
+        <ul>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="index.html">Logout</a></li>
+          <li><a href="fav.html">Favorites</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h2>Select a Category</h2>
+        <div id="categories-container" class="category-buttons">
+          <button class="category-btn" onclick="selectCategory('Vegetarian')">Vegetarian</button>
+          <button class="category-btn" onclick="selectCategory('Non-Vegetarian')">Non-Vegetarian</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- <footer>
+    <p> at your service @RecipeVault</p>
+  </footer> -->
+
+  <!-- Link to the external JavaScript file -->
+  <script src="categories.js"></script>
+</body>
+</html>

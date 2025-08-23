@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #customAlert {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      border-radius: 5px;
+      z-index: 9999;
+      font-family: sans-serif;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+<div id="customAlert"></div>
+
+<script>
+  function showAlert(message, timeout = 3000) {
+    const alertBox = document.getElementById("customAlert");
+    alertBox.textContent = message;
+    alertBox.style.display = "block";
+
+    setTimeout(() => {
+      alertBox.style.display = "none";
+    }, timeout);
+  }
+
+</script>
+
+</body>
+</html>

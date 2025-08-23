@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeVault</title>
+  <link rel="stylesheet" href="veg.css">
+</head>
+<body>
+  <!-- it checks user logged in or not -->
+  <script>
+    console.log(localStorage.getItem('log'));
+ if (sessionStorage.getItem('log') !== 'true') {
+    alert('You must log in to access this page.');
+    window.location.href = 'index.html';
+}
+</script>
+  <!-- chatbot -->
+ <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="s8qefyk4CnxUP4DK0k1YX";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+  <header class="dashboard">
+    <h1>RecipeVault</h1>
+    <nav>
+      <ul>
+        <li><a href="categories.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="index.html">Logout</a></li>
+        <li><a href="fav.html">Favorites</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Select Ingredients (Click to Select)</h2>
+
+    <!-- Vegetables Section -->
+    <div class="category">
+      <h3>Vegetables:</h3>
+      <div class="ingredient-grid" id="vegetables">
+        <div class="ingredient" data-ingredient="Carrot">Carrot</div>
+        <div class="ingredient" data-ingredient="Potato">Potato</div>
+        <div class="ingredient" data-ingredient="Tomato">Tomato</div>
+        <div class="ingredient" data-ingredient="Onion">Onion</div>
+        <div class="ingredient" data-ingredient="Beans">Beans</div>
+        <div class="ingredient" data-ingredient="Cabbage">Cabbage</div>
+        <div class="ingredient" data-ingredient="Cauliflower">Cauliflower</div>
+        <div class="ingredient" data-ingredient="Peas">Peas</div>
+        
+        <!-- Show More Button -->
+        <div class="toggle-btn-container">
+          <button class="more-btn" id="toggle-veg">Show More</button>
+        </div>
+        <div class="ingredient extra" data-ingredient="Capsicum">Capsicum</div>
+        <div class="ingredient extra" data-ingredient="Brinjal">Brinjal</div>
+        <div class="ingredient extra" data-ingredient="Brussels Sprouts">Brussels Sprouts</div>
+        <div class="ingredient extra" data-ingredient="Artichoke">Artichoke</div>
+        <div class="ingredient extra" data-ingredient="Zucchini">Zucchini</div>
+        <div class="ingredient extra" data-ingredient="Kale">Kale</div>
+        <div class="ingredient extra" data-ingredient="Beetroot">Beetroot</div>
+        <div class="ingredient extra" data-ingredient="Pumpkin">Pumpkin</div>
+        <div class="ingredient extra" data-ingredient="Bottle Gourd">Bottle Gourd</div>
+        <div class="ingredient extra" data-ingredient="Ridge Gourd">Ridge Gourd</div>
+      </div>
+    </div>
+
+    <!-- Green Leaves Section -->
+    <div class="category">
+      <h3>Green Leaves:</h3>
+      <div class="ingredient-grid" id="greens">
+        <div class="ingredient" data-ingredient="Spinach">Spinach</div>
+        <div class="ingredient" data-ingredient="Fenugreek Leaves">Fenugreek Leaves</div>
+        <div class="ingredient" data-ingredient="Amaranth Leaves">Amaranth Leaves</div>
+        <div class="ingredient" data-ingredient="Mustard Greens">Mustard Greens</div>
+        <div class="ingredient" data-ingredient="Coriander Leaves">Coriander Leaves</div>
+        <div class="ingredient" data-ingredient="Curry Leaves">Curry Leaves</div>
+        <div class="ingredient" data-ingredient="Radish Leaves">Radish Leaves</div>
+        <div class="ingredient" data-ingredient="Beet Greens">Beet Greens</div>
+        
+        <!-- Show More Button -->
+        <div class="toggle-btn-container">
+          <button class="more-btn" id="toggle-greens">Show More</button>
+        </div>
+        
+        <div class="ingredient extra" data-ingredient="Chard">Chard</div>
+        <div class="ingredient extra" data-ingredient="Collard Leaves">Collard Greens</div>
+        <div class="ingredient extra" data-ingredient="Dandelion Leaves">Dandelion Greens</div>
+        <div class="ingredient extra" data-ingredient="Nettle">Nettle</div>
+        <div class="ingredient extra" data-ingredient="Water Spinach">Water Spinach</div>
+      </div>
+    </div>
+
+    <!-- Fruits Section -->
+    <div class="category">
+      <h3>Fruits:</h3>
+      <div class="ingredient-grid" id="fruits">
+        <div class="ingredient" data-ingredient="Mango">Mango</div>
+        <div class="ingredient" data-ingredient="Banana">Banana</div>
+        <div class="ingredient" data-ingredient="Guava">Guava</div>
+        <div class="ingredient" data-ingredient="Papaya">Papaya</div>
+        <div class="ingredient" data-ingredient="Watermelon">Watermelon</div>
+        <div class="ingredient" data-ingredient="Muskmelon">Muskmelon</div>
+        <div class="ingredient" data-ingredient="Pomegranate">Pomegranate</div>
+        <div class="ingredient" data-ingredient="Apple">Apple</div>
+        
+        <!-- Show More Button -->
+        <div class="toggle-btn-container">
+          <button class="more-btn" id="toggle-fruits">Show More</button>
+        </div>
+        
+        <div class="ingredient extra" data-ingredient="Pineapple">Pineapple</div>
+        <div class="ingredient extra" data-ingredient="Chikoo">Chikoo</div>
+        <div class="ingredient extra" data-ingredient="Custard Apple">Custard Apple</div>
+        <div class="ingredient extra" data-ingredient="Lychee">Lychee</div>
+        <div class="ingredient extra" data-ingredient="Peach">Peach</div>
+        <div class="ingredient extra" data-ingredient="Pear">Pear</div>
+        <div class="ingredient extra" data-ingredient="Plum">Plum</div>
+        <div class="ingredient extra" data-ingredient="Ber">Ber</div>
+        <div class="ingredient extra" data-ingredient="Orange">Orange</div>
+        <div class="ingredient extra" data-ingredient="Grapes">Grapes</div>
+        <div class="ingredient extra" data-ingredient="Coconut">Coconut</div>
+        <div class="ingredient extra" data-ingredient="Jackfruit">Jackfruit</div>
+      </div>
+    </div>
+
+    <!-- Legumes Section -->
+    <div class="category">
+      <h3>Legumes:</h3>
+      <div class="ingredient-grid" id="legumes">
+        <div class="ingredient" data-ingredient="Toor Dal">Toor Dal</div>
+        <div class="ingredient" data-ingredient="Chana Dal">Chana Dal</div>
+        <div class="ingredient" data-ingredient="Moong Dal">Moong Dal</div>
+        <div class="ingredient" data-ingredient="Urad Dal">Urad Dal</div>
+        <div class="ingredient" data-ingredient="Masoor Dal">Masoor Dal</div>
+        <div class="ingredient" data-ingredient="Whole Chana">Whole Chana</div>
+        <div class="ingredient" data-ingredient="Rajma">Rajma</div>
+        <div class="ingredient" data-ingredient="Green Moong">Green Moong</div>
+        
+        <!-- Show More Button -->
+        <div class="toggle-btn-container">
+          <button class="more-btn" id="toggle-legumes">Show More</button>
+        </div>
+        
+        <div class="ingredient extra" data-ingredient="Moth">Moth</div>
+        <div class="ingredient extra" data-ingredient="Chawli">Chawli</div>
+        <div class="ingredient extra" data-ingredient="Vaal">Vaal</div>
+        <div class="ingredient extra" data-ingredient="Peas">Peas</div>
+        <div class="ingredient extra" data-ingredient="Soyabean">Soybean</div>
+        <div class="ingredient extra" data-ingredient="Brown Chana">Brown Chana</div>
+        <div class="ingredient extra" data-ingredient="White Chana">White Chana</div>
+        <div class="ingredient extra" data-ingredient="Horse Gram">Horse Gram</div>
+        <div class="ingredient extra" data-ingredient="Black Chana">Black Chana</div>
+        <div class="ingredient extra" data-ingredient="Matki">Matki</div>
+        <div class="ingredient extra" data-ingredient="Kulthi">Kulthi</div>
+        <div class="ingredient extra" data-ingredient="Lobia">Lobia</div>
+      </div>
+    </div>
+
+    <!-- Grains Section -->
+    <div class="category">
+      <h3>Grains:</h3>
+      <div class="ingredient-grid" id="grains">
+        <div class="ingredient" data-ingredient="Rice">Rice</div>
+        <div class="ingredient" data-ingredient="Wheat">Wheat</div>
+        <div class="ingredient" data-ingredient="Bajra">Bajra</div>
+        <div class="ingredient" data-ingredient="Jowar">Jowar</div>
+        <div class="ingredient" data-ingredient="Ragi">Ragi</div>
+        <div class="ingredient" data-ingredient="Maize">Maize</div>
+        <div class="ingredient" data-ingredient="Barley">Barley</div>
+        <div class="ingredient" data-ingredient="Quinoa">Quinoa</div>
+        
+        <!-- Show More Button -->
+        <div class="toggle-btn-container">
+          <button class="more-btn" id="toggle-grains">Show More</button>
+        </div>
+        
+        <div class="ingredient extra" data-ingredient="Kodo Millet">Kodo Millet</div>
+        <div class="ingredient extra" data-ingredient="Barnyard Millet">Barnyard Millet</div>
+        <div class="ingredient extra" data-ingredient="Sorghum">Sorghum</div>
+        <div class="ingredient extra" data-ingredient="Oats">Oats</div>
+        <div class="ingredient extra" data-ingredient="Brown Rice">Brown Rice</div>
+        <div class="ingredient extra" data-ingredient="Red Rice">Red Rice</div>
+        <div class="ingredient extra" data-ingredient="Black Rice">Black Rice</div>
+        <div class="ingredient extra" data-ingredient="Wild Rice">Wild Rice</div>
+        <div class="ingredient extra" data-ingredient="Amaranth">Amaranth</div>
+        <div class="ingredient extra" data-ingredient="Buckwheat">Buckwheat</div>
+        <div class="ingredient extra" data-ingredient="Foxtail Millet">Foxtail Millet</div>
+        <div class="ingredient extra" data-ingredient="Little Millet">Little Millet</div>
+      </div>
+    </div>
+
+    <!-- Spices Section -->
+    <div class="category">
+      <h3>Spices:</h3>
+      <div class="ingredient-grid" id="spices">
+        <div class="ingredient" data-ingredient="Salt">Salt</div>
+        <div class="ingredient" data-ingredient="Garlic">Garlic</div>
+        <div class="ingredient" data-ingredient="Ginger">Ginger</div>
+        <div class="ingredient" data-ingredient="Turmeric">Turmeric</div>
+        <div class="ingredient" data-ingredient="Cumin">Cumin</div>
+        <div class="ingredient" data-ingredient="Coriander Seeds">Coriander Seeds</div>
+        <div class="ingredient" data-ingredient="Red Chili Powder">Red Chili Powder</div>
+        <div class="ingredient" data-ingredient="Garam Masala">Garam Masala</div>
+ 
+       
+        <!-- Show More Button -->
+        <div class="toggle-btn-container">
+          <button class="more-btn" id="toggle-spices">Show More</button>
+        </div>
+        <div class="ingredient extra" data-ingredient="Mustard Seeds">Mustard Seeds</div>
+        <div class="ingredient extra" data-ingredient="Nigella Seeds">Nigella Seeds</div>
+        <div class="ingredient extra" data-ingredient="Asafoetida">Asafoetida</div>
+        <div class="ingredient extra" data-ingredient="Bay Leaf">Bay Leaf</div>
+        <div class="ingredient extra" data-ingredient="Carom Seeds">Carom Seeds</div>
+        <div class="ingredient extra" data-ingredient="Dry Mango Powder">Dry Mango Powder</div>
+        <div class="ingredient extra" data-ingredient="Tamarind">Tamarind</div>
+        <div class="ingredient extra" data-ingredient="Saffron">Saffron</div>
+        <div class="ingredient extra" data-ingredient="Nutmeg">Nutmeg</div>
+        <div class="ingredient extra" data-ingredient="Cloves">Cloves</div>
+        <div class="ingredient extra" data-ingredient="Black Pepper">Black Pepper</div>
+        <div class="ingredient extra" data-ingredient="Fenugreek Seeds">Fenugreek Seeds</div>
+        <div class="ingredient extra" data-ingredient="Fennel Seeds">Fennel Seeds</div>
+        <div class="ingredient extra" data-ingredient="Cardamom">Cardamom</div>
+        <div class="ingredient extra" data-ingredient="Cinnamon">Cinnamon</div>
+      </div>
+    </div>
+    <!-- Oils Section -->
+    <div class="category">
+      <h3>Oils:</h3>
+      <div class="ingredient-grid" id="oils">
+        <div class="ingredient" data-ingredient="Mustard Oil">Mustard Oil</div>
+        <div class="ingredient" data-ingredient="Ghee">Ghee</div>
+        <div class="ingredient" data-ingredient="Coconut Oil">Coconut Oil</div>
+        <div class="ingredient" data-ingredient="Sunflower Oil">Sunflower Oil</div>
+        <div class="ingredient" data-ingredient="Sesame Oil">Sesame Oil</div>
+        <div class="ingredient" data-ingredient="Groundnut Oil">Groundnut Oil</div>
+        <div class="ingredient" data-ingredient="Olive Oil">Olive Oil</div>
+        <div class="ingredient" data-ingredient="Rice Bran Oil">Rice Bran Oil</div>
+        
+        <!-- Show More Button -->
+        <div class="toggle-btn-container">
+          <button class="more-btn" id="toggle-oils">Show More</button>
+        </div>
+        
+        <div class="ingredient extra" data-ingredient="Avocado Oil">Avocado Oil</div>
+        <div class="ingredient extra" data-ingredient="Safflower Oil">Safflower Oil</div>
+        <div class="ingredient extra" data-ingredient="Grapeseed Oil">Grapeseed Oil</div>
+        <div class="ingredient extra" data-ingredient="Almond Oil">Almond Oil</div>
+        <div class="ingredient extra" data-ingredient="Canola Oil">Canola Oil</div>
+        <div class="ingredient extra" data-ingredient="Butter">Butter</div>
+      </div>
+    </div>
+
+    <!-- Dairy & Alternatives Section -->
+    <div class="category">
+      <h3>Dairy & Alternatives:</h3>
+      <div class="ingredient-grid" id="dairy">
+        <div class="ingredient" data-ingredient="Paneer">Paneer</div>
+        <div class="ingredient" data-ingredient="Ghee">Ghee</div>
+        <div class="ingredient" data-ingredient="Dahi">Dahi</div>
+        <div class="ingredient" data-ingredient="Malai">Malai</div>
+        <div class="ingredient" data-ingredient="Chass">Chaas</div>
+        <div class="ingredient" data-ingredient="Shrikhand">Shrikhand</div>
+        <div class="ingredient" data-ingredient="Khonya">Khoya</div>
+        <div class="ingredient" data-ingredient="Chena">Chena</div>
+        
+        <!-- Show More Button -->
+        <div class="toggle-btn-container">
+          <button class="more-btn" id="toggle-dairy">Show More</button>
+        </div>
+        
+        <div class="ingredient extra" data-ingredient="Cottage Cheese">Cottage Cheese</div>
+        <div class="ingredient extra" data-ingredient="Soy Milk">Soy Milk</div>
+        <div class="ingredient extra" data-ingredient="Almond Milk">Almond Milk</div>
+        <div class="ingredient extra" data-ingredient="Coconut Milk">Coconut Milk</div>
+        <div class="ingredient extra" data-ingredient="Oat Milk">Oat Milk</div>
+        <div class="ingredient extra" data-ingredient="Rice Milk">Rice Milk</div>
+        <div class="ingredient extra" data-ingredient="Vegan Cheese">Vegan Cheese</div>
+        <div class="ingredient extra" data-ingredient="Tofu">Tofu</div>
+        <div class="ingredient extra" data-ingredient="Lassi">Lassi</div>
+        <div class="ingredient extra" data-ingredient="Rabdi">Rabdi</div>
+        <div class="ingredient extra" data-ingredient="Kulfi">Kulfi</div>
+        <div class="ingredient extra" data-ingredient="Chena Poda">Chhena Poda</div>
+        <div class="ingredient extra" data-ingredient="Basundi">Basundi</div>
+        <div class="ingredient extra" data-ingredient="Mawa">Mawa</div>
+        <div class="ingredient extra" data-ingredient="Fresh Cream">Fresh Cream</div>
+        <div class="ingredient extra" data-ingredient="Mozzarella">Mozzarella</div>
+        <div class="ingredient extra" data-ingredient="Feta">Feta</div>
+        <div class="ingredient extra" data-ingredient="Parmesan">Parmesan</div>
+        <div class="ingredient extra" data-ingredient="Ricotta">Ricotta</div>
+        <div class="ingredient extra" data-ingredient="Sour Cream">Sour Cream</div>
+      </div>
+    </div>
+
+    <div class="category">
+        <h3>Flours & Powders:</h3>
+        <div class="ingredient-grid" id="flour">
+          <div class="ingredient" data-ingredient="Wheat">Wheat</div>
+          <div class="ingredient" data-ingredient="Rice">Rice</div>
+          <div class="ingredient" data-ingredient="Bean">Besan</div>
+          <div class="ingredient" data-ingredient="Maida">Maida</div>
+          <div class="ingredient" data-ingredient="Ragi">Ragi</div>
+          <div class="ingredient" data-ingredient="Bajra">Bajra</div>
+          <div class="ingredient" data-ingredient="Jowar">Jowar</div>
+          <div class="ingredient" data-ingredient="Corn">Corn</div>
+          
+          <!-- Show More Button -->
+          <div class="toggle-btn-container">
+            <button class="more-btn" id="toggle-flour">Show More</button>
+          </div>
+          
+          <div class="ingredient extra" data-ingredient="Almond">Almond</div>
+          <div class="ingredient extra" data-ingredient="coconut">coconut</div>
+          <div class="ingredient extra" data-ingredient="Baking Powder">Baking Powder</div>
+          <div class="ingredient extra" data-ingredient="Baking Soda">Baking Soda</div>
+          <div class="ingredient extra" data-ingredient="Cocoa Powder">Cocoa Powder</div>
+          <div class="ingredient extra" data-ingredient="Arrowroot Powder">Arrowroot Powder</div>
+        </div>
+      </div>
+      <div class="category">
+        <h3>Sweeteners:</h3>
+        <div class="ingredient-grid" id="sweeteners">
+          <div class="ingredient" data-ingredient="Sugar">Sugar</div>
+          <div class="ingredient" data-ingredient="Jaggery">Jaggery</div>
+          <div class="ingredient" data-ingredient="Honey">Honey</div>
+          <div class="ingredient" data-ingredient="Maple Syrup">Maple Syrup</div>
+          <div class="ingredient" data-ingredient="Dates">Dates</div>
+          <div class="ingredient" data-ingredient="Coconut Sugar">Coconut Sugar</div>
+          <div class="ingredient" data-ingredient="Stevia">Stevia</div>
+          <div class="ingredient" data-ingredient="Brown Sugar">Brown Sugar</div>
+          
+          <!-- Show More Button -->
+          <div class="toggle-btn-container">
+            <button class="more-btn" id="toggle-sweeteners">Show More</button>
+          </div>
+          
+          <div class="ingredient extra" data-ingredient="Palm Sugar">Palm Sugar</div>
+          <div class="ingredient extra" data-ingredient="Agave Nectar">Agave Nectar</div>
+          <div class="ingredient extra" data-ingredient="Molasses">Molasses</div>
+          <div class="ingredient extra" data-ingredient="Date Syrup">Date Syrup</div>
+          <div class="ingredient extra" data-ingredient="Monk Fruit">Monk Fruit</div>
+          <div class="ingredient extra" data-ingredient="Rice Syrup">Rice Syrup</div>
+        </div>
+      </div>
+      <div class="category">
+        <h3>Protein & Nutrient Boosters:</h3>
+        <div class="ingredient-grid" id="nutrients">
+          <div class="ingredient" data-ingredient="Quinoa">Quinoa</div>
+          <div class="ingredient" data-ingredient="Chia Seeds">Chia Seeds</div>
+          <div class="ingredient" data-ingredient="Hemp Seeds">Hemp Seeds</div>
+          <div class="ingredient" data-ingredient="Nutritional Yeast">Nutritional Yeast</div>
+          <div class="ingredient" data-ingredient="Spirulina">Spirulina</div>
+          <div class="ingredient" data-ingredient="Tempeh">Tempeh</div>
+          <div class="ingredient" data-ingredient="Moringa Powder">Moringa Powder</div>
+          <div class="ingredient" data-ingredient="Amaranth">Amaranth</div>
+          
+          <!-- Show More Button -->
+          <div class="toggle-btn-container">
+            <button class="more-btn" id="toggle-nutrients">Show More</button>
+          </div>
+          
+          <div class="ingredient extra" data-ingredient="Wheat Germ">Wheat Germ</div>
+          <div class="ingredient extra" data-ingredient="Black Garlic">Black Garlic</div>
+          <div class="ingredient extra" data-ingredient="Seaweed">Seaweed</div>
+          <div class="ingredient extra" data-ingredient="Teff">Teff</div>
+          <div class="ingredient extra" data-ingredient="Lupin Beans">Lupin Beans</div>
+          <div class="ingredient extra" data-ingredient="Watercress">Watercress</div>
+          <div class="ingredient extra" data-ingredient="Black Sapote">Black Sapote</div>
+          <div class="ingredient extra" data-ingredient="Aronia Berries">Aronia Berries</div>
+          <div class="ingredient extra" data-ingredient="Natto">Natto</div>
+          <div class="ingredient extra" data-ingredient="Tiger Nuts">Tiger Nuts</div>
+        </div>
+      </div>
+      <div class="submit-container">
+        <button id="submitBtn" onclick="submitIngredients()">Submit Ingredients</button>
+      </div>
+      
+      <!-- Recipes Display Section -->
+<div id="recipes-container"></div>
+
+  <!-- Matching recipes will be dynamically inserted here by JS -->
+</div>
+
+  </div>
+
+
+  <script src="nv.js"></script>
+</body>
+</html>

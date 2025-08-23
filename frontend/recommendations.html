@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Recipes</title>
+    <link rel="stylesheet" href="recommendations.css">
+</head>
+<body>
+</head>
+<body>
+  
+  <!-- it checks user logged in or not -->
+  <script>
+    if (sessionStorage.getItem('log') !== 'true') {
+    alert('You must log in to access this page.');
+    window.location.href = 'index.html';
+}
+</script>
+  <!-- chatbot -->
+ <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="s8qefyk4CnxUP4DK0k1YX";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+    <nav class="navbar">
+        <div class="logo">RecipeVault</div>
+        <div class="nav-links">
+            <a href="categories.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="index.html">Logout</a>
+            <a href="fav.html">Favorites</a>
+        </div>
+    </nav>
+
+    <header class="header">
+        <h1>Recommended Recipes</h1>
+        <p class="subtitle">Based on your selected ingredients</p>
+    </header>
+<!-- <h2>Filter Recipes</h2> -->
+  <div class="filter-group">
+    <!-- Veg/Non-Veg -->
+    <select id="veg-filter">
+      <option value="">All</option>
+      <option value="Veg">Veg</option>
+      <option value="Non-Veg">Non-Veg</option>
+    </select>
+
+    <!-- Cuisine Filter -->
+    <select id="cuisine-filter">
+      <option value="">All Cuisines</option>
+      <option>North Indian</option>
+      <option>Indian Food</option>
+      <option>South Indian</option>
+      <option>Gujarati food</option>
+      <option>Gujarati</option>
+      <option>indian</option>
+      <option>Italian</option>
+      <option>Mexican</option>
+      <option>Chinise</option>
+      <option>North-Indian</option>
+      <option>Kashmiri</option>
+      <option>Punjabi</option>
+      <option>Coastal</option>
+      <option>Tamil_nadu special</option>
+      <option>Mumbai Special</option>
+      <option>Kerala</option>
+      <option>Punjabi Special</option>
+      <option>Bengali Special</option>
+      <option>Mughlai style</option>
+      <option>Andhra Special</option>
+      <option>Awadhi Style</option>
+      <option>Goan Style</option>
+      <option>Manglorean Special</option>
+      <option>Maharastra Special</option>
+      <option>Thai</option>
+      <option>Japanese</option>
+      <option>Vietnamese</option>
+      <option>Korean</option>
+      <option>Chinese</option>
+      <option>Mediterranean</option>
+      <option>American</option>
+      <option>Spanish</option>
+      <option>American BBQ</option>
+      <option>Continental</option>
+      <option>European</option>
+      <option>Fusion</option>
+      <option>Asian</option>
+      <option>Maharashtrian</option>
+      <option>British</option>
+      <option>French</option>
+      <option>Rajasthani</option>
+    </select>
+
+    <!-- Protein Filter -->
+    <select id="protein-filter">
+      <option value="">Any Protein</option>
+      <option value="rich">Rich in Protein</option>
+    </select>
+
+    <!-- Timing Filter -->
+    <select id="time-filter">
+      <option value="">Any Time</option>
+      <option value="15">Under 15 min</option>
+      <option value="30">Under 30 min</option>
+      <option value="60">Under 60 min</option>
+    </select>
+
+    <!-- Most Favorite -->
+    <select id="favorite-filter">
+      <option value="">All</option>
+      <option value="most">Most Favorite</option>
+    </select>
+  </div>
+    <main class="recipes-container" id="recipes-container">
+        <!-- Recipes will be dynamically inserted here by JavaScript -->
+    </main>
+
+</body>
+</html>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const email = localStorage.getItem("email");
+  if (!email) {
+    alert("You are not logged in. Redirecting to login page.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  const recipes = JSON.parse(localStorage.getItem('recipes'));
+  const container = document.getElementById('recipes-container');
+
+  if (recipes && recipes.length > 0) {
+    recipes.forEach(recipe => {
+      const card = document.createElement('div');
+      card.className = 'recipe-card';
+
+      card.innerHTML = `
+        <div class="recipe-content">
+          <img src="${recipe.image}" alt="${recipe.name}" class="recipe-image">
+          <div class="recipe-title">${recipe.name}</div>
+          <div class="recipe-details">
+            <p><strong>Dietary Type:</strong> ${recipe.dietary_type}</p>
+            <p><strong>Calories:</strong> ${recipe.calories}</p>
+            <p><strong>Protein:</strong> ${recipe.protein}</p>
+            <p><strong>Time:</strong> ${recipe.Time}</p>
+            <p><strong>Cuisine:</strong> ${recipe.Cuisine}</p>
+            <a href="${recipe.link}" target="_blank" class="youtube_link">Watch Recipe Video</a>
+            <button class="add-to-favorites" data-recipe-id="${recipe.id}">Add to Favorites</button>
+
+      `;
+
+      container.appendChild(card);
+
+      // ✅ Safely attach event listener AFTER appending
+      const button = card.querySelector('.add-to-favorites');
+      button.addEventListener('click', function () {
+        const recipeId = parseInt(this.dataset.recipeId, 10);
+        console.log("Sending favorite data:", { email, recipeId });
+
+        fetch('http://localhost:3000/add-favorite', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ email, recipe_id: recipeId })
+
+        })
+         .then(res => res.json())
+        .then(data => {
+            if (data.message) {
+            alert("✅ Recipe added to favorites!");
+            } else {
+            alert("⚠️ Failed to add to favorites.");
+            }
+        })
+        .catch(err => {
+          console.error("Fetch error:", err);
+          alert("❌ Something went wrong.");
+        });
+      });
+    });
+  } else {
+    container.innerHTML = '<p>No recipes available.</p>';
+  }
+});
+</script>
+

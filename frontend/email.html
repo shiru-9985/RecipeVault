@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeVault</title>
+</head>
+<body>
+
+  <!-- Email Form -->
+  <form id="emailForm">
+    <label for="email">Enter your Email:</label>
+    <input type="email" id="email" required>
+    <button type="submit">Send Verification Code</button>
+  </form>
+
+  <!-- Verification Code Form (Initially hidden) -->
+  <form id="verificationForm" style="display: none;">
+    <label for="verificationCode">Enter Verification Code:</label>
+    <input type="text" id="verificationCode" required>
+    <button type="submit">Verify Code</button>
+  </form>
+
+  <!-- Include the script at the end of the body -->
+  <script src="your-script.js"></script>
+
+</body>
+</html>
