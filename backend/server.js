@@ -25,7 +25,7 @@ const otpStore = new Map(); // email => { otp, expiresAt }
 // Function to send OTP Email
 function sendOTPEmail(toEmail, otp) {
   const mailOptions = {
-    from: process.env.GMAIL_USER,,
+    from: process.env.GMAIL_USER,
     to: toEmail,
     subject: 'The OTP for your RecipeVault Account is',
     html: `<p>Your OTP code is: <b>${otp}</b>. It will expire in 5 minutes.</p>`
