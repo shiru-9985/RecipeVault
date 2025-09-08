@@ -1,3 +1,4 @@
+require("dotenv").config();
 const cors = require('cors'); 
 const multer = require('multer');
 const dotenv = require("dotenv");
@@ -8,7 +9,7 @@ const nodemailer = require('nodemailer');  //for authenticating using OTP
 const app = express(); 
 app.use(cors());  
 app.use(cors({
-  origin: 'http://localhost:3000'  // Allow only your frontend URL
+  origin: 'https://recipevault-frontend.onrender.com'  // Allow only your frontend URL
 }));
 // Mail Authentication
 app.use(express.json()); // To parse JSON bodies
@@ -94,15 +95,21 @@ app.post('/reset', (req, res) => {
 });
 
 
-const mysql = require('mysql');
-const bcrypt = require('bcrypt');
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
   user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME
+});
+
+db.connect(err => {
+  if (err) console.error('DB connection failed:', err);
+  else console.log('Connected to Railway MySQL!');
 });
 
 app.use(bodyParser.json());
@@ -111,13 +118,15 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 // Session middleware 
   app.use(session({
   secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        secure: false,  
-        httpOnly: true
-    }
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+      secure: true,       // HTTPS required
+      httpOnly: true,     // JavaScript cannot access the cookie
+      sameSite: 'none'    // allows cross-origin cookies
+  }
 }));
+
 // Connect database
 db.connect((err) => {
     if (err) {
@@ -146,6 +155,23 @@ app.get('/profile', (req, res) => {
 // Test route
 app.get('/', (req, res) => {
     res.send('Server is running!');
+});
+app.post("/update-profile-photo", (req, res) => {
+  const { email, photoUrl } = req.body;
+
+  if (!email || !photoUrl) {
+    return res.status(400).json({ success: false, message: "Missing fields" });
+  }
+
+  const query = "UPDATE account_details SET photo = ? WHERE email = ?";
+  db.query(query, [photoUrl, email], (err, result) => {
+    if (err) {
+      console.error("DB error:", err);
+      return res.status(500).json({ success: false, message: "Database error" });
+    }
+
+    res.json({ success: true, message: "Profile photo updated successfully!" });
+  });
 });
 
 // ================== Signup Route ==================
