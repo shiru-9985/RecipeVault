@@ -46,7 +46,6 @@
 
       // Send login request
       fetch('https://recipevault-backend.onrender.com/login', {
-<<<<<<< Updated upstream
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -65,27 +64,6 @@
           alert(data.message);
         }
       })
-=======
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email, password }),
-    credentials: 'include' // <--- important for cookies/session
-})
-.then(response => response.json())
-.then(data => {
-    console.log("Response from server:", data);
-    if (data.message === 'Login successful') {
-        localStorage.setItem('email', email);
-        console.log(email);
-        // redirect or update UI here
-    } else {
-        alert(data.message);
-    }
-})
-
->>>>>>> Stashed changes
       .catch(err => {
         console.error('Error:', err);
         alert('An error occurred. Please try again.');
